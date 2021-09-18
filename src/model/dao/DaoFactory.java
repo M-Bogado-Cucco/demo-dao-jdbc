@@ -1,5 +1,6 @@
 package model.dao;
 
+import db.DB;
 import model.dao.impl.SellerDaoJDBC;
 
 public class DaoFactory {
@@ -9,6 +10,6 @@ public class DaoFactory {
 //não conhece a implementação, conhece somente a interface. É também uma forma de injeção de dependência
 //sem expor a implementação.
 	public static SellerDao createSellerDao() {
-		return new SellerDaoJDBC();
+		return new SellerDaoJDBC(DB.getConnection());
 	}
 }
